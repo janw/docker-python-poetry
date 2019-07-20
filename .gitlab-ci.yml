@@ -20,7 +20,10 @@ services:
   script:
     - export IMAGE_NAME=$CI_REGISTRY_IMAGE:${IMAGE_VERSION}${IMAGE_FLAVOR}
     - docker pull $IMAGE_NAME || true
-    - docker build --tag IMAGE_NAME -f Dockerfile${IMAGE_FLAVOR} .
+    - docker build
+      --build-arg IMAGE_VERSION=$IMAGE_VERSION
+      --build-arg IMAGE_FLAVOR=$IMAGE_FLAVOR
+      --tag $IMAGE_NAME -f Dockerfile${IMAGE_FLAVOR} .
 
     # Tag with only the flavor for the Python version considered latest
     - |

@@ -1,5 +1,6 @@
-ARG PYTHON_VERSION=3.7
-FROM python:${PYTHON_VERSION}-alpine
+ARG IMAGE_VERSION=3.7
+ARG IMAGE_FLAVOR=-alpine
+FROM python:${PYTHON_VERSION}${IMAGE_FLAVOR}
 
 ARG POETRY_HOME=/poetry
 COPY poetry.sh $POETRY_HOME/bin/poetry
@@ -18,3 +19,4 @@ RUN wget -q -O /tmp/poetry.tar.gz \
     find "$POETRY_HOME/lib/poetry/_vendor/" \
         -type d -mindepth 1 -maxdepth 1 ! -name "py${PYTHON_VERSION}" -exec rm -r {} \;
 
+WORKDIR /src
