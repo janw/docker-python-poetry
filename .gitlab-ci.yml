@@ -1,0 +1,38 @@
+variables:
+  DOCKER_DRIVER: overlay2
+  IMAGE_FLAVOR: ""
+  IMAGE_LATEST_FLAVOR: "-buster"
+  IMAGE_VERSION: "3.7"
+  IMAGE_LATEST_VERSION: "3.7"
+
+services:
+  - docker:dind
+
+.docker:
+  image: docker:stable
+  stage: build
+  before_script:
+    - |
+      if [ -z "$DOCKER_HOST" -a "$KUBERNETES_PORT" ]; then
+        export DOCKER_HOST='tcp://localhost:2375'
+      fi
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - export IMAGE_NAME=$CI_REGISTRY_IMAGE:${IMAGE_VERSION}${IMAGE_FLAVOR}
+    - docker pull $IMAGE_NAME || true
+    - docker build --tag IMAGE_NAME -f Dockerfile${IMAGE_FLAVOR} .
+
+    # Tag with only the flavor for the Python version considered latest
+    - |
+      if [ "$IMAGE_VERSION$IMAGE_FLAVOR" = "$IMAGE_LATEST_VERSION$IMAGE_LATEST_FLAVOR" ]; then
+        docker tag $IMAGE_NAME $CI_REGISTRY_IMAGE:latest
+        docker push $CI_REGISTRY_IMAGE:latest
+      fi
+
+    - docker push $IMAGE_NAME
+
+3.7-alpine:
+  extends: .docker
+  variables:
+    IMAGE_VERSION: "3.7"
+    IMAGE_FLAVOR: "-alpine"

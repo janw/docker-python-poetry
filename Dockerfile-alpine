@@ -1,0 +1,20 @@
+ARG PYTHON_VERSION=3.7
+FROM python:${PYTHON_VERSION}-alpine
+
+ARG POETRY_HOME=/poetry
+COPY poetry.sh $POETRY_HOME/bin/poetry
+
+ENV POETRY_VERSION=0.12.17
+ENV POETRY_SHASUM=862bff9bb15c0193aa831b9acb886f61a23a055c8910ea094e996d663c974037
+
+RUN wget -q -O /tmp/poetry.tar.gz \
+    https://github.com/sdispater/poetry/releases/download/${POETRY_VERSION}/poetry-${POETRY_VERSION}-linux.tar.gz && \
+    ([ "$POETRY_SHASUM  /tmp/poetry.tar.gz" = "$(sha256sum /tmp/poetry.tar.gz)" ] || exit 1) && \
+    mkdir -p $POETRY_HOME/lib && tar -xzf /tmp/poetry.tar.gz -C $POETRY_HOME/lib && \
+    chmod +x $POETRY_HOME/bin/poetry && \
+    ln -s $POETRY_HOME/bin/poetry /usr/local/bin/poetry && \
+    poetry config settings.virtualenvs.create false && \
+    rm /tmp/poetry.tar.gz && \
+    find "$POETRY_HOME/lib/poetry/_vendor/" \
+        -type d -mindepth 1 -maxdepth 1 ! -name "py${PYTHON_VERSION}" -exec rm -r {} \;
+
