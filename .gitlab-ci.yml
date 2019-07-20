@@ -37,3 +37,12 @@ services:
 3.7-alpine: { extends: .docker, variables: { IMAGE_VERSION: "3.7", IMAGE_FLAVOR: "-alpine" }}
 3.6-alpine: { extends: .docker, variables: { IMAGE_VERSION: "3.6", IMAGE_FLAVOR: "-alpine" }}
 3.5-alpine: { extends: .docker, variables: { IMAGE_VERSION: "3.5", IMAGE_FLAVOR: "-alpine" }}
+3.7-slim: { extends: .docker, variables: { IMAGE_VERSION: "3.7", IMAGE_FLAVOR: "-slim" }}
+3.6-slim: { extends: .docker, variables: { IMAGE_VERSION: "3.6", IMAGE_FLAVOR: "-slim" }}
+3.5-slim: { extends: .docker, variables: { IMAGE_VERSION: "3.5", IMAGE_FLAVOR: "-slim" }}
+3.7-buster: { extends: .docker, variables: { IMAGE_VERSION: "3.7", IMAGE_FLAVOR: "-buster" }}
+3.6-buster: { extends: .docker, variables: { IMAGE_VERSION: "3.6", IMAGE_FLAVOR: "-buster" }}
+3.5-buster: { extends: .docker, variables: { IMAGE_VERSION: "3.5", IMAGE_FLAVOR: "-buster" }}
+3.7_: { extends: .docker, variables: { IMAGE_VERSION: "3.7", IMAGE_FLAVOR: "" }}
+3.6_: { extends: .docker, variables: { IMAGE_VERSION: "3.6", IMAGE_FLAVOR: "" }}
+3.5_: { extends: .docker, variables: { IMAGE_VERSION: "3.5", IMAGE_FLAVOR: "" }}
