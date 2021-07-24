@@ -39,7 +39,7 @@ services:
 3.7-alpine: { extends: .docker, variables: { IMAGE_VERSION: "3.7", IMAGE_FLAVOR: "-alpine" }}
 3.6-alpine: { extends: .docker, variables: { IMAGE_VERSION: "3.6", IMAGE_FLAVOR: "-alpine" }}
 
-3.9-slim: { extends: .docker, variables: { IMAGE_VERSION: "3.9", IMAGE_FLAVOR: "-alpine" }}
+3.9-slim:   { extends: .docker, variables: { IMAGE_VERSION: "3.9", IMAGE_FLAVOR: "-slim" }}
 3.8-slim:   { extends: .docker, variables: { IMAGE_VERSION: "3.8", IMAGE_FLAVOR: "-slim" }}
 3.7-slim:   { extends: .docker, variables: { IMAGE_VERSION: "3.7", IMAGE_FLAVOR: "-slim" }}
 3.6-slim:   { extends: .docker, variables: { IMAGE_VERSION: "3.6", IMAGE_FLAVOR: "-slim" }}

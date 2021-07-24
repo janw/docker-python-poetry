@@ -42,7 +42,6 @@ find "$POETRY_HOME" -depth \
 # Custom handling for slim images to remove previous additions
 if [ "$IMAGE_FLAVOR" = "-alpine" ]; then
     apk del --no-cache rsync
-    apk cache clean
 else
     apt-get purge -y --auto-remove wget rsync
     rm -rf /var/lib/apt/lists/*
