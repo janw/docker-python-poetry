@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import glob
 import sys
 import os
 
@@ -11,4 +10,4 @@ sys.path.insert(0, lib)
 if __name__ == "__main__":
     from poetry.console import main
 
-    main()
+    sys.exit(main())
