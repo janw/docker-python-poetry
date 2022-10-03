@@ -35,24 +35,22 @@ services:
     - docker push $IMAGE_NAME
 
 3.10-alpine: { extends: .docker, variables: { IMAGE_VERSION: "3.10", IMAGE_FLAVOR: "-alpine" }}
+3.9-alpine: { extends: .docker, variables: { IMAGE_VERSION: "3.9", IMAGE_FLAVOR: "-alpine" }}
 3.8-alpine: { extends: .docker, variables: { IMAGE_VERSION: "3.8", IMAGE_FLAVOR: "-alpine" }}
 3.7-alpine: { extends: .docker, variables: { IMAGE_VERSION: "3.7", IMAGE_FLAVOR: "-alpine" }}
-3.6-alpine: { extends: .docker, variables: { IMAGE_VERSION: "3.6", IMAGE_FLAVOR: "-alpine" }}
 
 3.10-slim:   { extends: .docker, variables: { IMAGE_VERSION: "3.10", IMAGE_FLAVOR: "-slim" }}
+3.9-slim:   { extends: .docker, variables: { IMAGE_VERSION: "3.9", IMAGE_FLAVOR: "-slim" }}
 3.8-slim:   { extends: .docker, variables: { IMAGE_VERSION: "3.8", IMAGE_FLAVOR: "-slim" }}
 3.7-slim:   { extends: .docker, variables: { IMAGE_VERSION: "3.7", IMAGE_FLAVOR: "-slim" }}
-3.6-slim:   { extends: .docker, variables: { IMAGE_VERSION: "3.6", IMAGE_FLAVOR: "-slim" }}
 
 3.10-buster: { extends: .docker, variables: { IMAGE_VERSION: "3.10", IMAGE_FLAVOR: "-buster" }}
 3.9-buster: { extends: .docker, variables: { IMAGE_VERSION: "3.9", IMAGE_FLAVOR: "-buster" }}
 3.8-buster: { extends: .docker, variables: { IMAGE_VERSION: "3.8", IMAGE_FLAVOR: "-buster" }}
 3.7-buster: { extends: .docker, variables: { IMAGE_VERSION: "3.7", IMAGE_FLAVOR: "-buster" }}
-3.6-buster: { extends: .docker, variables: { IMAGE_VERSION: "3.6", IMAGE_FLAVOR: "-buster" }}
 
 
 3.10_:       { extends: .docker, variables: { IMAGE_VERSION: "3.10", IMAGE_FLAVOR: "" }}
 3.9_:       { extends: .docker, variables: { IMAGE_VERSION: "3.9", IMAGE_FLAVOR: "" }}
 3.8_:       { extends: .docker, variables: { IMAGE_VERSION: "3.8", IMAGE_FLAVOR: "" }}
 3.7_:       { extends: .docker, variables: { IMAGE_VERSION: "3.7", IMAGE_FLAVOR: "" }}
-3.6_:       { extends: .docker, variables: { IMAGE_VERSION: "3.6", IMAGE_FLAVOR: "" }}
